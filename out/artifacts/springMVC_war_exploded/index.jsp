@@ -15,7 +15,7 @@
     用户名：<input type="text" id="username" name="username"/></br>
     密码：<input type="password" id="password" name="password"/></br>
     <input type="submit" value="登录">
-    <input type="button" value="注册" onclick="javascript:document.location.href='/spring/register1'; return false;">
+    <input type="button" value="注册" onclick="document.location.href='/spring/register1'; return false;">
 </form>
 </body>
 </html>

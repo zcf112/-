@@ -21,7 +21,9 @@ public class User {
     }
 
     public String checkThis(String nameIn, int passwordIn) {
-        if (this.name.equals(nameIn) && this.password == passwordIn) return "登录成功";
+        System.out.println(nameIn);
+        System.out.println(passwordIn);
+        if (this.getName().equals(nameIn) && this.getPassword() == passwordIn) return "登录成功";
         else return "登陆失败";
     }
 

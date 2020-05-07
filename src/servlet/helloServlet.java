@@ -16,25 +16,24 @@ import java.io.PrintWriter;
 public class helloServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=gb2312");
-        PrintWriter out = response.getWriter();
+        PrintWriter ou = response.getWriter();
         request.setCharacterEncoding("gb2312");
+
         String username = request.getParameter("username");
         int password = Integer.parseInt(request.getParameter("password"));
-        out.println("<html>");
-        out.println("<body>");
-        //out.println("用户名:" + username + "<br>");
-        //out.println("密码：" + password);
-
 
         //使用spring创建对象并调用方法
         ServletContext context = getServletContext();
         ApplicationContext app = (ApplicationContext) context.getAttribute("ApplicationContext");
         User user = app.getBean("user", User.class);
-        out.println(user.checkThis(username, password));
-        //System.out.println(user);
+        String str = user.checkThis(username, password);
+        System.out.println(user.checkThis(username, password));
 
-        out.println("</body>");
-        out.println("</html>");
+        ou.println("<html>");
+        ou.println("<body>");
+        ou.println(str);
+        ou.println("</body>");
+        ou.println("</html>");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
