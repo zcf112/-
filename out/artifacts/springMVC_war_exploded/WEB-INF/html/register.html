@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册界面</title>
+</head>
+<body>
+<form action="/zcfapp/change" method="post">
+    {% csrf_token %}
+    用户名：<input id="username" name="username" type="text"/></br>
+    密码：<input id="password" name="password" type="password"/></br>
+    <input type="submit" value="注册">
+</form>
+
+</body>
+</html>
