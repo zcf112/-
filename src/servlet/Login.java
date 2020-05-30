@@ -10,34 +10,33 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
-@WebServlet("/helloServlet")
-public class helloServlet extends HttpServlet {
+/**
+ * @author asus
+ */
+@WebServlet("/Login")
+public class Login extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=gb2312");
-        PrintWriter ou = response.getWriter();
-        request.setCharacterEncoding("gb2312");
-
-        String username = request.getParameter("username");
-        int password = Integer.parseInt(request.getParameter("password"));
+        String username = request.getParameter("UserNameIn");
+        String password = request.getParameter("PasswordIn");
 
         //使用spring创建对象并调用方法
         ServletContext context = getServletContext();
+        //获取ServletContext context中的ApplicationContext
         ApplicationContext app = (ApplicationContext) context.getAttribute("ApplicationContext");
         User user = app.getBean("user", User.class);
         String str = user.checkThis(username, password);
         System.out.println(user.checkThis(username, password));
-
-        ou.println("<html>");
-        ou.println("<body>");
-        ou.println(str);
-        ou.println("</body>");
-        ou.println("</html>");
+        //重定向
+        //response.sendRedirect("/spring/register.jsp");
+        request.setAttribute("username", username);
+        request.getRequestDispatcher("/main.jsp").forward(request, response);
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("登录");
-        //跳转main？？？
+        //跳转main
     }
 }

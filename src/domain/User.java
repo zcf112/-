@@ -1,14 +1,17 @@
 package domain;
 
+/**
+ * @author asus
+ */
 public class User {
     private String name;
-    private int password;
+    private String password;
 
-    public int getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -20,22 +23,22 @@ public class User {
         this.name = name;
     }
 
-    public String checkThis(String nameIn, int passwordIn) {
+    public String checkThis(String nameIn, String passwordIn) {
         System.out.println(nameIn);
         System.out.println(passwordIn);
-        if (this.getName().equals(nameIn) && this.getPassword() == passwordIn) return "登录成功";
-        else return "登陆失败";
+        if (this.getName().equals(nameIn) && this.getPassword().equals(passwordIn)) {
+            return "登录成功";
+        } else {
+            return "登陆失败";
+        }
     }
 
-    //@Override
-    //public String toString() {
-    //    return "User{" +
-    //            "name='" + name;
-    //}
-
-    //public void sayHello() {
-    //    System.out.println("Hello");
-    //}
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }
 

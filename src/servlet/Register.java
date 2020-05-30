@@ -6,22 +6,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
-@WebServlet("/register1")
-public class register1 extends HttpServlet {
+/**
+ * 注册处理
+ *
+ * @author asus
+ */
+@WebServlet("/register")
+public class Register extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //是否添加成功标志位
+        int success = 0;
+        //1.向数据库添加数据
 
+        //2.返回登录界面，失败返回注册界面
+        if (success == 1) {
+            response.sendRedirect("/index.jsp");
+        } else {
+            response.sendRedirect("/register.jsp");
+        }
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=gb2312");
-        PrintWriter out = response.getWriter();
-        request.setCharacterEncoding("gb2312");
-        out.println("<html>");
-        out.println("<body>");
-        out.println("注册成功！<br>");
-        out.println("</body>");
-        out.println("</html>");
+        response.sendRedirect("/register.jsp");
     }
 }
