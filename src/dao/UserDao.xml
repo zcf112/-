@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.UserDao">
+    <!--
+        建立表与实体类映射对应关系
+        ID属性:唯一标识符，给查询标签引用
+        type:指定实体类全限定类名
+    -->
+    <resultMap id="userMap" type="domain.User">
+        <!-- 用于指定主键的映射关系 -->
+        <id column="userId" property="userId"/>
+        <!-- 用于指定非主键映射关系 -->
+        <result column="userName" property="userName"/>
+        <result column="password" property="password"/>
+    </resultMap>
+
+    <!-- 添加用户 -->
+    <insert id="saveUser" parameterType="user">
+        <selectKey keyColumn="userId" keyProperty="userId" resultType="int" order="AFTER">
+            select last_insert_id()
+        </selectKey>
+        insert into user(userName,password)values(#{userName},#{password});
+    </insert>
+
+    <!-- 按姓名模糊查询 -->
+    <select id="findByUserName" resultType="java.lang.String" parameterType="String">
+      select * from user where userName like #{userName}
+    </select>
+
+</mapper>

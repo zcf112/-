@@ -3,7 +3,7 @@
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="user" class="domain.User">
-        <property name="name" value="zcf112"></property>
-        <property name="password" value="112112"></property>
+        <property name="userName" value="zcf112"/>
+        <property name="password" value="112112"/>
     </bean>
 </beans>

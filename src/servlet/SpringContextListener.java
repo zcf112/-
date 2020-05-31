@@ -8,7 +8,9 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 public class SpringContextListener implements ServletContextListener {
-    /* 1.添加监听器类 */
+    /**
+     * 1.添加监听器类
+     */
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         ServletContext context = sce.getServletContext();

@@ -5,7 +5,7 @@
   Time: 23:08
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <title>主页面</title>
@@ -22,11 +22,11 @@
 </div>
 
 <div title="jump">
-    <a href="localhost:8080/queryByName.jsp?id=1&name=合肥">查询所有好友信息</a>
+    <a href="localhost:8080/queryByName.jsp?name=合肥">查询所有好友信息</a>
     <%=userName%>
 </div>
 <div>
-    <a href="localhost:8080/allfriend.jsp?id=1&name=<%=userName%>">按名字模糊查询好友消息</a>
+    <a href="localhost:8080/allfriend.jsp?name=<%=userName%>">按名字模糊查询好友消息</a>
 </div>
 <input type="hidden" id="idTest" value="<%=userName%>">
 </body>

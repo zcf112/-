@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <!--
+            别名应用  type：实体类所在全限定类名  alias ：定义别名,应用中忽略别名大小写
+        -->
+        <!--<typeAlias type="com.pojo.User" alias="user"></typeAlias>-->
+        <!-- 指定实体类所在位置，别名名称为实体类的类名称 -->
+        <package name="domain"></package>
+    </typeAliases>
+    <environments default="mysql">
+        <!-- 配置mysql的环境  -->
+        <environment id="mysql">
+            <!-- 配置事务管理类型 -->
+            <transactionManager type="JDBC"></transactionManager>
+            <!-- 配置连接数据库的信息：连接池  -->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"></property>
+                <property name="url" value="jdbc:mysql://localhost:3306/db"></property>
+                <property name="username" value="zcf112"></property>
+                <property name="password" value="112112"></property>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!--<mapper resource="com/dao/UserDao.xml"></mapper>-->
+        <mapper resource="dao/UserDao1.xml"></mapper>
+    </mappers>
+</configuration>

@@ -26,17 +26,22 @@ public class Login extends HttpServlet {
         //获取ServletContext context中的ApplicationContext
         ApplicationContext app = (ApplicationContext) context.getAttribute("ApplicationContext");
         User user = app.getBean("user", User.class);
-        String str = user.checkThis(username, password);
-        System.out.println(user.checkThis(username, password));
+        int success = user.checkThis(username, password);
+        if (success == 1) {
+            System.out.println("登陆成功");
+        } else {
+            System.out.println("登陆失败");
+        }
         //重定向
-        //response.sendRedirect("/spring/register.jsp");
+        // response.sendRedirect("/main.jsp");
         request.setAttribute("username", username);
+        System.out.println(request);
         request.getRequestDispatcher("/main.jsp").forward(request, response);
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("登录");
+        System.out.println("登录的doGet");
         //跳转main
     }
 }
